@@ -1,0 +1,267 @@
+Q2 :
+	1- Reconciliation is a process that react use to update the dom ,that impelemnted by using vairual by comparing the new and old version of it .
+
+	2-react uses the context api to handle that issue
+
+	3- has its data in form of state , otherwise the statelss dont use the state its takes the data from props
+	
+	4-no it dont have their own , they inhirit it from the parent scope 
+
+	5- not the map dont affect it return a new one 
+
+	6- map return a new array while foreach does not return anything 
+
+	7- is a object that has 3 states : pending , resolved , success in the async actions
+
+	8- uses freze method
+
+	9- uses json.parse() 
+	
+	10- uses try and catch block to identify the error and handle it 
+	
+	11- is a sensitive data values stored far from the code , like api key , db url 
+	
+	12- design that support multiple screens , we use css mediaquery to implement it and set a custom layout for deferent screens
+
+	13- its storing of an actions done before and used to not repead same process and if the inputs dont change it return the stored the result 
+
+
+
+
+Q3:
+
+	block-1: output will be : 0 1 2 3  => because the for in used to loop on the key values and the keys in the array are the index 
+
+	block-2 : After displayData call 
+		  Data fetched!          => because the displaydata is a async function , will execute the log after it and when finish it will log the output of it 
+
+	block-3: output Hello , Gust
+
+	block-4: will log undefined
+
+
+ 
+	block-5: erorr
+
+
+	block-6: bear bear 
+		 sheep sheep 
+
+	block-7: undefined
+
+
+Q4:
+	1-
+
+	public : can create object anywhere 
+	
+	private: only accessed within the calss 
+	
+	2- 	encapsulation is concept implement data hiding in the project to mange access of data by setters/getters , not right to call it data protection
+	   	abstraction implement the concept of what does without how 
+
+	
+	3-	final in java is like the const keyword in JavaScript make the constant variables , and in scope of oop in used to define methods that cant be overridden or class cant be extended 
+
+	5- type of polymorphism does with method overlading , operator overloading 
+	
+	6- 
+		a-false
+		b-true
+		c-true
+
+Q5:
+	1- 
+		async function fetchBooks(url){
+			
+		  try{
+			const res = await fetch(url)
+			const data = res.json()
+			return data;
+		  }catch(error){
+		  	return error;
+		   } 
+		}
+	
+	2-
+		function CalcPower(num , exponent){
+		
+			if(exponent === 0 ) retuen 1;
+			
+			return num * CalcPower(num , exponent - 1);
+		}
+
+	3-
+		function findSecondLowestAndGreatest(array) {
+
+    			const unique = [...new Set(array)];  
+
+   			 if (unique.length < 2) {
+       				 console.log("Not enough unique elements.");
+        			return;
+    			  }
+	
+			 unique.sort((a, b) => a - b);  
+
+    			let secondLowest = unique[1];
+    			let secondGreatest = unique[unique.length - 2];
+
+    			console.log("Second Lowest:", secondLowest);
+    			console.log("Second Greatest:", secondGreatest);
+		}
+		
+		
+		4- function Leap(year){
+		
+			if(year % 4 === 0){
+				if(year% 100 === 0 ){
+				  return year % 400 === 0;	 
+			  	}
+			 return true;
+	                }
+			return false;
+	    }
+		
+		5-    class BankAccount {
+  constructor(accountNumber, balance = 0) {
+    this.accountNumber = accountNumber;
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    if (amount > 0) {
+      this.balance += amount;
+      console.log(`Deposited $${amount} to account ${this.accountNumber}`);
+    } else {
+      console.log("Deposit amount must be positive.");
+    }
+  }
+
+  withdraw(amount) {
+    if (amount > 0 && amount <= this.balance) {
+      this.balance -= amount;
+      console.log(`Withdrew $${amount} from account ${this.accountNumber}`);
+    } else {
+      console.log("Insufficient balance or invalid amount.");
+    }
+  }
+
+  getBalance() {
+    console.log(`Balance for account ${this.accountNumber}: $${this.balance}`);
+  }
+}
+
+const account1 = new BankAccount("1");
+const account2 = new BankAccount("2", 1000);
+
+account1.deposit(500);     // Deposited $500
+account1.withdraw(200);    // Withdrew $200
+account1.getBalance();     // Balance: $300
+
+account2.withdraw(300);    // Withdrew $300
+account2.deposit(150);     // Deposited $150
+account2.getBalance();     // Balance: $850
+
+
+6- 
+	const stuAbove60 = students.filter(student => student.marks > 60)
+	console.log("students Greater than 60")
+	stuAbove60.forEach(student => console.log(student.name))
+	
+
+	stuUpdated = students.map(student => {
+			
+			if(student.marks < 60){
+			 	
+				return	{...student , marks: student.marks +20}
+			}
+			
+			return student
+		     })
+
+
+	const totalMarks = stuUpdated.reduce((total , stu)=>  total+ student.marks , 0);
+         console.log(`total marks:${totalMarks}`)
+
+
+
+7- 
+function binarySearch(arr,goal){
+        
+        let low = 0 ;
+        let high = arr.length -1 ;
+        
+        
+        while(low <= high){
+            const middle = Math.floor((low + high) / 2)
+        
+            if(arr[middle] === goal){
+                return middle
+            }
+            
+            if(arr[middle] > goal){
+                high = middle -1;
+            }else{
+                low = middle + 1
+            }
+        }
+        
+        return -1
+}
+
+
+8- inside the linkedlist class =>
+
+	ConvertToArray(){
+			let array = []
+			let temp = this.head
+			while(temp !== null){
+					
+				array.push(temp.data)
+				temp = temp.next	
+			}
+			
+			return array;
+		} 
+	
+	
+
+
+Q6:
+		
+	1- should put the numbers array in the dependency array because here the usememo will run only one time 
+
+
+
+
+     3- 
+import React, { useRef, useState } from "react";
+
+function Dropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
+  return (
+    <div ref={dropdownRef}>
+      <button onClick={toggleDropdown}>Toggle Menu</button>
+      {isOpen && (
+        <ul>
+          <li>Option 1</li>
+          <li>Option 2</li>
+        </ul>
+      )}
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+
+
